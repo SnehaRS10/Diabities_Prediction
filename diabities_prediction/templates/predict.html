@@ -1,0 +1,123 @@
+{% load static %}
+<html>
+  <head>
+    <title>DiaCare - Predict Diabetes Risk</title>
+  <style>
+    body {
+      background-color: #212121;
+      margin: 0;
+      padding: 0;
+      font-family: "Open Sans", sans-serif;
+      color: #fff; /* Ensure text visibility */
+    }
+
+    .main {
+      margin: 25px auto;
+      width: 550px;
+      background-color: #100720;
+      border-radius: 10px;
+      padding: 5%;
+      box-shadow: inset 0 0 0 2px #100720, inset 0 0 0 6px rgba(255, 94, 247, 0.5),
+        inset 0 0 0 10px rgba(2, 245, 255, 0.2);
+    }
+
+    h1 {
+      background-image: linear-gradient(to right, #ff94f2, #00f5ff);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      color: #100720; /* Match color to background (adjust if needed) */
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 15px 0;
+      display: inline-block;
+      border: 1px solid #ddd; /* Add subtle border */
+      border-radius: 4px;
+      background-color: #100720; /* Match color to background (adjust if needed) */
+      color: #fff; /* Ensure text visibility */
+    }
+
+    input[type="submit"] {
+      background-color: #100720; /* Match color to background (adjust if needed) */
+      border: 2px solid #4dc3ff;
+      color: #fff;
+      padding: 8px 16px;
+      cursor: pointer;
+      margin-top: 15px;
+      border-radius: 4px;
+      font-size:20px;
+    }
+
+    label {
+      display: block; /* Style labels consistently */
+      margin-bottom: 5px;
+      color: #fff; /* Ensure text visibility */
+      font-size: 20px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #4dc3ff;
+      color: #100720;
+    }
+   
+  </style>
+  </head>
+  <body>
+    <div align="center" class="main">
+      <h1>Please enter the following information:</h1>
+      <form action="result" method="GET">
+        <table>
+            <tr>
+                <td align='right'><label for='n1'>Pregnancies:</label></td>
+                <td align='left'><input type='text' id='n1' name='n1' value="{{ request.GET.n1 }}"></td>
+            </tr>
+    
+            <tr>
+                <td align='right'><label for='n2'>Glucose:</label></td>
+                <td align='left'><input type='text' id='n2' name='n2' value="{{ request.GET.n2 }}"></td>
+            </tr>
+    
+            <tr>
+                <td align='right'><label for='n3'>Blood Pressure:</label></td>
+                <td align='left'><input type='text' name='n3' value="{{ request.GET.n3 }}"></td>
+            </tr>
+    
+            <tr>
+                <td align='right'><label for='n4'>Skin Thickness:</label></td>
+                <td align='left'><input type='text' name='n4' value="{{ request.GET.n4 }}"></td>
+            </tr>
+    
+            <tr>
+                <td align='right'><label for='n5'>Insulin:</label></td>
+                <td align='left'><input type='text' name='n5' value="{{ request.GET.n5 }}"></td>
+            </tr>
+    
+            <tr>
+                <td align='right'><label for='n6'>BMI:</label></td>
+                <td align='left'><input type='text' name='n6' value="{{ request.GET.n6 }}"></td>
+            </tr>
+    
+            <tr>
+                <td align='right'><label for='n7'>Diabetes Pedigree Function:</label></td>
+                <td align='left'><input type='text' name='n7' value="{{ request.GET.n7 }}"></td>
+            </tr>
+    
+            <tr>
+                <td align='right'><label for='n8'>Age:</label></td>
+                <td align='left'><input type='text' name='n8' value="{{ request.GET.n8 }}"></td>
+            </tr>
+    
+        </table>
+        <input type="submit">
+    </form>
+    <p style="font-size: 25px">Result: <span style="color: {% if result2 == 'POSITIVE' %}red{% else %}green{% endif %}">{{ result2 }}</span></p>
+    </div>
+  </body>
+</html>
